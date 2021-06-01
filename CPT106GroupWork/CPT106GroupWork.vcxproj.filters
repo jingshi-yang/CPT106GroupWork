@@ -14,4 +14,44 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="user.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="chef.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="manager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="customer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="inventory.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dish.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="user.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="chef.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="manager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="customer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="inventory.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dish.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
 </Project>
