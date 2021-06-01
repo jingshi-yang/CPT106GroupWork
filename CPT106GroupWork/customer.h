@@ -1,10 +1,12 @@
 #pragma once
 #include "user.h"
+
 class customer :
     public user
 {
+private:
+    map<dish, int> orderList;
 public:
-    void order();
-    void setuser(string user);
+    void order(dish newDish);
 };
 

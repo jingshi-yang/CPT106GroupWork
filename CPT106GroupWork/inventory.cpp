@@ -9,6 +9,16 @@ bool inventory::isExisted(string key)
 	return true;
 }
 
+inventory::inventory(ifstream input)
+{
+	input.setf(ios::skipws);
+	string tempName;
+	while (input.get() != EOF)
+	{
+		input >> tempName >> materials[tempName] >> prices[tempName];
+	}
+}
+
 void inventory::add(string key, int value, double price)
 {
 	if (!isExisted(key)) throw NoMaterialsException();

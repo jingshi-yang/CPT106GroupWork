@@ -2,6 +2,7 @@
 #include <string>
 #include <map>
 #include <vector>
+#include <fstream>
 using namespace std;
 
 struct QuantityIllegalException:
@@ -28,7 +29,7 @@ private:
 	bool isExisted(string key);
 
 public:
-	inventory(string input);
+	inventory(ifstream input);
 
 	void add(string key, int value, double price);		// Add a new raw material
 	void consume(string key, int consume_value);		// Reduce the quantity of given raw material

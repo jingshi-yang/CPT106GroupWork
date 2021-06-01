@@ -142,6 +142,7 @@
     <ClInclude Include="chef.h" />
     <ClInclude Include="customer.h" />
     <ClInclude Include="dish.h" />
+    <ClInclude Include="FileIO.h" />
     <ClInclude Include="manager.h" />
     <ClInclude Include="inventory.h" />
     <ClInclude Include="user.h" />
@@ -150,6 +151,7 @@
     <ClCompile Include="chef.cpp" />
     <ClCompile Include="customer.cpp" />
     <ClCompile Include="dish.cpp" />
+    <ClCompile Include="FileIO.cpp" />
     <ClCompile Include="manager.cpp" />
     <ClCompile Include="inventory.cpp" />
     <ClCompile Include="user.cpp" />

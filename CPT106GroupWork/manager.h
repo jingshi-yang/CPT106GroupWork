@@ -3,8 +3,10 @@
 class manager :
     public user
 {
+private:
+    map<dish, int> orderList;
 public:
-    void order();
+    void order(dish newDish);
 
 };
 
