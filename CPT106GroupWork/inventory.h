@@ -1,12 +1,31 @@
 #pragma once
 #include <string>
 #include <map>
+#include <vector>
 using namespace std;
+
+struct QuantityIllegalException:
+	public exception
+{
+	const char* what() const throw() {
+		return "The quantity is illegal.";
+	}
+};
+
+struct NoMaterialsException:
+	public exception
+{
+	const char* what() const throw() {
+		return "Material doesn't exist in inventory.";
+	}
+};
+
 class inventory
 {
 private:
 	map<string, int> materials;		// Stores the quantity of raw materials
-	map<string, double> price;		// Stores the prices of raw materials
+	map<string, double> prices;		// Stores the prices of raw materials
+	bool isExisted(string key);
 
 public:
 	inventory(string input);
