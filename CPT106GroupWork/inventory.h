@@ -9,7 +9,7 @@ private:
 	map<string, double> price;		// Stores the prices of raw materials
 
 public:
-	inventory();
+	inventory(string input);
 
 	void add(string key, int value, double price);		// Add a new raw material
 	void consume(string key, int consume_value);		// Reduce the quantity of given raw material

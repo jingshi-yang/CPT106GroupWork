@@ -1,4 +1,4 @@
 #include <iostream>
-int mian() {
-	return ture;
+int main() {
+	return 0;
 }

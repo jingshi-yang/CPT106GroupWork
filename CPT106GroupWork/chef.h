@@ -5,7 +5,7 @@ class chef :
 {
 private:
 public:
-    int searchMaterial();
-
+    int searchMaterial(string material);
+    void newDish(string input);
 };
 

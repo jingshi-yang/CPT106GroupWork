@@ -9,7 +9,8 @@ private:
 	vector<string> materials;
 	double price;
 public:
-	dish();
-
+	dish(string materialsInput);
+	double grossProfit();
+	void isOrdered();
 };
 
