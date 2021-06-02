@@ -12,8 +12,15 @@ using namespace std;
 int main()
 {
     user *user = nullptr;
-    inventory myinventory;
+    FileIO inventoryfile("inventory.txt");
+    FileIO dishfile("dish.txt");
+    FileIO cheflist("chef.txt");
+    FileIO managerlist("managerlist.txt");
+    inventory myinventory(inventoryfile.readAllStream());
+    vector<dish> mydish = dishfile.readdish(myinventory);
+    menu mymenu(mydish, myinventory);
     bool finishLog = false;
+    string name, id;
     int choseJob;
     cout << "Welcome to Restaurant Management System" << endl;
     do
@@ -24,12 +31,22 @@ int main()
         switch (choseJob)
         {
         case 1: //login in as manager
-            user = new manager();
-            finishLog = true;
+            cout << "Please input your manager name:\n";
+            cin >> name;
+            cout << "Please input your manager id:\n";
+            cin >> id;
+            user = new manager(name,id);
+            if(user->Login(managerlist.readAllStream())){cout<< "The manager name does not exist or the id is incorrect";}
+            finishLog = user->Login(managerlist.readAllStream());
             break;
         case 2: //Chef
-            user = new chef();
-            finishLog = true;
+            cout << "Please input your chef name:\n";
+            cin >> name;
+            cout << "Please input your chef id:\n";
+            cin >> id;
+            user = new chef(name, id);
+            if (user->Login(cheflist.readAllStream())) { cout << "The chef name does not exist or the id is incorrect"; }
+            finishLog = user->Login(cheflist.readAllStream());
             break;
         case 3: //customer
             user = new customer();
@@ -60,11 +77,11 @@ int main()
             {
                 string targetmaterial;
                 cin >> targetmaterial;
-                user->searchMaterial(targetmaterial, searchinventory);
+                user->searchMaterial(targetmaterial, myinventory);
                 break;
             }//1. Search
             case 2:
-                user->newDish(*currentmenu, currentinventory);
+                user->newDish(*currentmenu, myinventory);
                 //2. Add to menu
                 break;
             case 3:
