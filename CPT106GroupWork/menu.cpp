@@ -20,14 +20,8 @@ void menu::deleteDish(dish deletedDish)
 	menuList.erase(deletedDish);
 }
 
-vector<dish> menu::getMenuList()
+set<dish> menu::getMenuList()
 {
-	vector<dish> dishList;
-	auto iter = menuList.begin();
-	for (; iter != menuList.end(); iter++)
-	{
-		dishList.push_back(*iter);
-	}
-	return dishList;
+	return menuList;
 }
 

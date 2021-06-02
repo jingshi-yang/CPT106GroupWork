@@ -4,6 +4,15 @@
 #include "inventory.h"
 
 using namespace std;
+
+struct NoDishException :
+	public exception
+{
+	const char* what() const throw() {
+		return "Your chosen dish does not exist.";
+	}
+};
+
 class dish
 {
 private:

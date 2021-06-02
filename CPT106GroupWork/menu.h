@@ -16,6 +16,6 @@ public:
 	void addDish(dish newDish);
 	void deleteDish(dish deletedDish);
 
-	vector<dish> getMenuList();
+	set<dish> getMenuList();
 };
 

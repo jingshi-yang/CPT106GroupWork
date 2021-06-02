@@ -6,6 +6,7 @@ class customer :
 {
 private:
     map<dish, int> orderList;
+    menu* dishList;
 public:
     void order(dish newDish);
 };
