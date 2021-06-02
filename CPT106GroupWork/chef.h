@@ -6,7 +6,9 @@ class chef :
 {
 private:
 public:
-    int searchMaterial(string material, inventory inventory);
-    void newDish(menu *currentmenu, inventory currentinventory);
+    chef(string username, string user_id);
+    bool Login(ifstream input);
+    int searchMaterial(string material, inventory totalinventory);
+    void newDish(menu *currentmenu, inventory totalinventory);
 };
 

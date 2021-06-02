@@ -1,8 +1,26 @@
 #include "chef.h"
 
-int chef::searchMaterial(string material,inventory searchinventory) {
+chef::chef(string username, string user_id) {
+	this->username = username;
+	this->user_id = user_id;
+}
+
+bool chef::Login(ifstream input) {
+	bool success = true;
+	string name, id;
+	while (input >> name >> id) {
+		if (name == username&&id == user_id)
+		{
+			return success;
+		}
+	}
+	success = false;
+	return success;
+}
+
+int chef::searchMaterial(string material,inventory totalinventory) {
 	int returninventory;
-	returninventory = searchinventory.getInventory(material);
+	returninventory = totalinventory.getInventory(material);
 	return returninventory;
 }
 

@@ -15,16 +15,16 @@ struct NoPermissionException :
 class user
 
 {
-private:
+protected:
 	string user_id;
 	string username;
 
 
-public:	
-	user(string username, string user_id);
-	virtual void order();
-	virtual int searchMaterial();
-	virtual void newDish();
+public:
+	virtual bool Login(ifstream input);
+	virtual void order(dish newDish);
+	virtual int searchMaterial(string material, inventory totalinventory);
+	virtual void newDish(menu* currentmenu, inventory totalinventory);
 
 };
 
