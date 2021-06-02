@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include<iostream>
 #include <map>
 #include <vector>
 #include <fstream>
@@ -28,6 +29,7 @@ private:
 	map<string, double> prices;		// Stores the prices of raw materials
 
 public:
+	inventory();
 	inventory(ifstream input);
 
 	void add(string key, int value, double price);		// Add a new raw material
