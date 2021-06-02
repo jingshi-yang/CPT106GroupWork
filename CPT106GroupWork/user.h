@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "dish.h"
+#include "menu.h"
 
 using namespace std;
 
@@ -20,8 +20,8 @@ private:
 	string username;
 
 
-public:
-	void quit();
+public:	
+	user(string username, string user_id);
 	virtual void order();
 	virtual int searchMaterial();
 	virtual void newDish();
