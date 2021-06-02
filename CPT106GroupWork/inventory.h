@@ -26,7 +26,6 @@ class inventory
 private:
 	map<string, int> materials;		// Stores the quantity of raw materials
 	map<string, double> prices;		// Stores the prices of raw materials
-	bool isExisted(string key);
 
 public:
 	inventory(ifstream input);
@@ -36,6 +35,7 @@ public:
 	void purchase(string key, int purchase_value);		// Induce the quantity of given raw material
 	void changePrice(string key, double newPrice);		// Change the price of given raw material
 
+	bool isExisted(string key);
 	int getInventory(string key);	// Return the quantity of given material
 	double getPrice(string key);	// Return the price of given material
 

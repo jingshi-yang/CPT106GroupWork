@@ -2,7 +2,7 @@
 
 bool inventory::isExisted(string key)
 {
-	if (materials.find(key) == materials.end())
+	if (materials.count(key) == 0)
 	{
 		return false;
 	}
