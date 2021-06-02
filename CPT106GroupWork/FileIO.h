@@ -2,6 +2,9 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <vector>
+
+#include "dish.h"
 
 using namespace std;
 
@@ -12,6 +15,7 @@ private:
 public:
 	FileIO(string name);
 	ifstream readAllStream();
+	vector<dish> readMenu();
 	void writeToFile();
 };
 

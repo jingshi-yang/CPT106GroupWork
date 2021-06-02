@@ -145,6 +145,7 @@
     <ClInclude Include="FileIO.h" />
     <ClInclude Include="manager.h" />
     <ClInclude Include="inventory.h" />
+    <ClInclude Include="menu.h" />
     <ClInclude Include="user.h" />
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +155,7 @@
     <ClCompile Include="FileIO.cpp" />
     <ClCompile Include="manager.cpp" />
     <ClCompile Include="inventory.cpp" />
+    <ClCompile Include="menu.cpp" />
     <ClCompile Include="user.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
