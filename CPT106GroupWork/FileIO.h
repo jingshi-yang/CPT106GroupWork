@@ -3,9 +3,8 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
-
-#include "dish.h"
-
+#include<iomanip>
+#include"menu.h"
 using namespace std;
 
 class FileIO
@@ -15,7 +14,8 @@ private:
 public:
 	FileIO(string name);
 	ifstream readAllStream();
-	vector<dish> readMenu();
-	void writeToFile();
+	vector<dish> readdish(inventory totalinventory);
+	void writeinventoryToFile(vector<string> material, inventory Inventory);
+	void writedishToFile(vector<dish> dishlist);
 };
 
