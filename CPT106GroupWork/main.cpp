@@ -1,12 +1,18 @@
 #include <iostream>
-#include <customer.cpp>
-#include <manager.cpp>
-#include <chef.cpp>
+#include"dish.h"
+#include"menu.h"
+#include"inventory.h"
+#include"chef.h"
+#include"customer.h"
+#include"manager.h"
+#include"user.h"
+#include"FileIO.h"
 using namespace std;
 
 int main()
 {
     user *user = nullptr;
+    inventory myinventory;
     bool finishLog = false;
     int choseJob;
     cout << "Welcome to Restaurant Management System" << endl;
@@ -46,18 +52,33 @@ int main()
     case 1: //manager
         do
         {
-            cout << "1. Search\t2. Add to menu\t3. Delete meal" << endl;
+            cout << "1. Search\t2. Add to menu\t3. Delete meal\t4. Show menu\t5. Order\t6. Checkout" << endl;
             cin >> choseAction;
             switch (choseAction)
             {
             case 1:
-                //1. Show menu
+            {
+                string targetmaterial;
+                cin >> targetmaterial;
+                user->searchMaterial(targetmaterial, searchinventory);
                 break;
+            }//1. Search
             case 2:
-                //2. Order
+                user->newDish(*currentmenu, currentinventory);
+                //2. Add to menu
                 break;
             case 3:
-                //3. Checkout
+                //3. Delete meal
+                break;
+            case 4:
+                //4. Show menu
+                break;
+            case 5:
+                order(newDish);
+                //5. Order
+                break;
+            case 6:
+                //6. Checkout
                 break;
             default:
                 cout << "Invalid input, please enter an integer between 1 and 3" << endl;
@@ -73,13 +94,20 @@ int main()
             switch (choseAction)
             {
             case 1:
-                //1. Show menu
-                break;
+            {
+                string targetmaterial;
+            cin >> targetmaterial;
+            user->searchMaterial(targetmaterial, searchinventory);
+            //1. Search
+            break;
+            }
             case 2:
-                //2. Order
+                user->newDish(*currentmenu,currentinventory);
+                //2. Add to menu
                 break;
             case 3:
-                //3. Checkout
+
+                //3. Delete meal
                 break;
             default:
                 cout << "Invalid input, please enter an integer between 1 and 3" << endl;
@@ -99,6 +127,7 @@ int main()
                 //1. Show menu
                 break;
             case 2:
+                order(newDish);
                 //2. Order
                 break;
             case 3:
