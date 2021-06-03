@@ -1,10 +1,14 @@
 #include "dish.h"
 
 
-dish::dish(string materialsInput, inventory inventory)
+dish::dish(string dishname, vector<string> materialsInput, inventory inventory, double inputprice)
 {
+	name = dishname;
+	materials = materialsInput;
 	currentInventory = &inventory;
+	price = inputprice;
 }
+
 
 double dish::grossProfit()
 {
@@ -24,4 +28,16 @@ void dish::isOrdered()
 	{
 		currentInventory->consume(materials[i], 1);
 	}
+}
+
+string dish::getname() {
+	return name;
+}
+
+vector<string> dish::getmaterials() {
+	return materials;
+}
+
+double dish::getprice() {
+	return price;
 }

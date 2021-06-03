@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "dish.h"
+#include "menu.h"
 
 using namespace std;
 
@@ -15,16 +15,16 @@ struct NoPermissionException :
 class user
 
 {
-private:
+protected:
 	string user_id;
 	string username;
 
 
 public:
-	void quit();
-	virtual void order();
-	virtual int searchMaterial();
-	virtual void newDish();
+	virtual bool Login(ifstream input);
+	virtual void order(dish newDish);
+	virtual int searchMaterial(string material, inventory totalinventory);
+	virtual void newDish(menu* currentmenu, inventory totalinventory);
 
 };
 

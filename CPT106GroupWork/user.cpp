@@ -1,16 +1,21 @@
 #include "user.h"
 
-void user::order()
+user::user(string username, string user_id) {
+	this->username = username;
+	this->user_id = user_id;
+}
+
+void user::order(dish newDish)
 {
 	throw NoPermissionException();
 }
 
-int user::searchMaterial()
+int user::searchMaterial(string material, inventory totalinventory) 
 {
 	throw NoPermissionException();
 }
 
-void user::newDish()
+void user::newDish(menu* currentmenu, inventory totalinventory) 
 {
 	throw NoPermissionException();
 }

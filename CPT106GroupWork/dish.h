@@ -16,12 +16,16 @@ struct NoDishException :
 class dish
 {
 private:
+	string name;
 	vector<string> materials;
-	double price;
+	double price = 0;
 	inventory *currentInventory;
 public:
-	dish(string materialsInput, inventory inventory);
+	dish(string dishname, vector<string> materialsInput, inventory inventory, double price);
+	dish(ifstream input, inventory inventory);
 	double grossProfit();
 	void isOrdered();
+	string getname();
+	vector<string> getmaterials();
+	double getprice();
 };
-
