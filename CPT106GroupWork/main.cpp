@@ -81,7 +81,7 @@ int main()
                 break;
             }//1. Search
             case 2:
-                user->newDish(*currentmenu, myinventory);
+                user->newDish(&mymenu, myinventory);
                 //2. Add to menu
                 break;
             case 3:
@@ -91,7 +91,7 @@ int main()
                 //4. Show menu
                 break;
             case 5:
-                order(newDish);
+                user->order(newDish);
                 //5. Order
                 break;
             case 6:
