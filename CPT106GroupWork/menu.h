@@ -7,15 +7,21 @@ class menu
 {
 private:
 	// Use a set to store the dishes in menu to avoid repeat
-	set<dish> menuList;
+	vector<dish> menuList;
+	vector<int> ordernumber;
 	double totalPrice;
 	double totalGrossProfit;
 public:
-	menu(vector<dish>);
+	menu();
+	menu(vector<dish> dishlist, inventory totalinventory);
 
 	void addDish(dish newDish);
 	void deleteDish(dish deletedDish);
-
-	set<dish> getMenuList();
+	void showmenu();
+	double gettotalPrice();
+	double gettotalGrossProfit();
+	void refresh(inventory totalinventory);
+	void clear();
+	vector<dish> getMenuList();
 };
 

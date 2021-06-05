@@ -5,14 +5,29 @@
 
 using namespace std;
 
+struct DishnameException :
+	public exception
+{
+	const char* what() const throw() {
+		return "Dish name input illegal!";
+	}
+};
+
 struct NoDishException :
 	public exception
 {
 	const char* what() const throw() {
-		return "Your chosen dish does not exist.";
+		return "Your chosen dish does not exist!";
 	}
 };
 
+struct DishexistException :
+	public exception
+{
+	const char* what() const throw() {
+		return "Your chosen dish is already exist!";
+	}
+};
 class dish
 {
 private:
@@ -25,6 +40,7 @@ public:
 	dish(ifstream input, inventory inventory);
 	double grossProfit();
 	void isOrdered();
+	void cancelOrdered();
 	string getname();
 	vector<string> getmaterials();
 	double getprice();
