@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include<iomanip>
 #include<iostream>
 #include <map>
 #include <vector>
@@ -11,6 +12,14 @@ struct QuantityIllegalException:
 {
 	const char* what() const throw() {
 		return "The quantity is illegal.";
+	}
+};
+
+struct PriceIllegalException :
+	public exception
+{
+	const char* what() const throw() {
+		return "The price is illegal.";
 	}
 };
 
@@ -40,6 +49,6 @@ public:
 	bool isExisted(string key);
 	int getInventory(string key);	// Return the quantity of given material
 	double getPrice(string key);	// Return the price of given material
-
+	
 };
 
