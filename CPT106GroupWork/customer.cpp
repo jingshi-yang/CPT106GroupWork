@@ -1,5 +1,10 @@
 #include "customer.h"
 
+customer::customer(menu& dishlist)
+{
+	*dishList = dishlist;
+}
+
 void customer::order(dish newDish)
 {
 		dishList->addDish(newDish);
@@ -22,4 +27,9 @@ double customer::check() {
 	 cout << dishList->gettotalPrice();
 	 return dishList->gettotalGrossProfit();
 	 dishList->clear();
+}
+
+user::job customer::Login()
+{
+	return user::customer;
 }

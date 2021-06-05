@@ -23,7 +23,6 @@ int main()
     string name, id;
     int choseJob;
     double Grossprofit;
-    int price;
     double price, materialinventory;
     string searchmaterial, addmaterial, modifymaterial;
     cout << "Welcome to Restaurant Management System" << endl;
@@ -53,7 +52,7 @@ int main()
             finishLog = user->Login(cheflist.readAllStream());
             break;
         case 3: //customer
-            user = new customer();
+            user = new customer(mymenu);
             finishLog = true;
             break;
         case 4: //exit
@@ -62,7 +61,7 @@ int main()
             cout << "Invalid input, please enter an integer between 1 and 4" << endl;
             break;
         }
-    } while (finishLog = false);
+    } while (finishLog == false);
     system("cls");
     cout << "Login successful" << endl;
     bool theEnd = false;
@@ -78,14 +77,14 @@ int main()
         cout << "---------------";
         //customer level
         cout << "|" << No++ << "." << setw(12) << "Order |\t";
-        const int choose = 0;
+        //const int choose = 0;
         //chef level
         cout << "|" << No++ << "." << setw(12) << "Add a dish |\t";
         cout << "|" << No++ << "." << setw(12) << "Delete a dish |\t";
         cout << "|" << No++ << "." << setw(12) << "Show menu |\t";
         cout << "|" << No++ << "." << setw(12) << "Search material|\t";
         cout << "|" << No++ << "." << setw(12) << "show materials |\t";
-        const int choose = 1;
+        //const int choose = 1;
         //manager level
         cout << "|" << No++ << "." << setw(12) << "add a material |\t";
         cout << "|" << No++ << "." << setw(12) << "delete a material |\t";
@@ -161,7 +160,7 @@ int main()
             try
             {
                 string dishname, material;
-                double price;
+                double price = 0.0;
                 vector<string> totalmaterial;
                 cout << "Please input dish name(between 2 to 20 charactors): " << endl;
                 cin >> dishname;

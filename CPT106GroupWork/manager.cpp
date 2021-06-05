@@ -5,17 +5,35 @@ manager::manager(string username, string user_id) {
 	this->user_id = user_id;
 }
 
-bool manager::Login(ifstream input) {
-	bool success = true;
-	string name, id;
-	while (input >> name >> id) {
-		if (name == username && id == user_id)
+user::job manager::Login(ifstream input) {
+	string uid;
+	string pw;
+	cout << "Please enter your user id." << endl;
+	cin >> uid;
+	cout << "Please enter your user password." << endl;
+	cin >> pw;
+	map<string, string> users;
+	map<string, user::job> usergroup;
+	string tempName, tempPW, tempUsergroup;
+	while (input.get() != EOF)
+	{
+		input >> tempName >> tempPW >> tempUsergroup;
+		users[tempName] = tempPW;
+		if (tempUsergroup == "manager")
 		{
-			return success;
+			usergroup[uid] = user::manager;
+		}
+		else
+		{
+			usergroup[uid] = chef;
 		}
 	}
-	success = false;
-	return success;
+	if (users[uid] == pw)
+	{
+		return usergroup[uid];
+	}
+
+	return customer;
 }
 
 void manager::order(dish newDish)

@@ -7,7 +7,7 @@ class chef :
 private:
 public:
     chef(string username, string user_id);
-    bool Login(ifstream input);
+    job Login(ifstream input);
     int searchMaterial(string material, inventory totalinventory);
     void newDish(dish newdish, vector<dish> totaldish, menu *currentmenu, inventory totalinventory);
 };

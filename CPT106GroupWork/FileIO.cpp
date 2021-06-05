@@ -30,6 +30,7 @@ vector<dish> FileIO::readdish(inventory totalinventory) {
 		dish newdish(name, materials, totalinventory, price);
 		readdish.push_back(newdish);
 	}
+	return readdish;
 }
 
 void FileIO::writeinventoryToFile(vector<string> material, inventory Inventory) {

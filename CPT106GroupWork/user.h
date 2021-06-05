@@ -18,10 +18,16 @@ class user
 protected:
 	string user_id;
 	string username;
+	enum job
+	{
+		manager, chef, customer
+	};
 
 
 public:
-	virtual bool Login(ifstream input);
+	user(string username, string user_id);
+	user();
+	virtual job Login(ifstream input);
 	virtual void order(dish newDish);
 	virtual int searchMaterial(string material, inventory totalinventory);
 	virtual void newDish(dish newdish, vector<dish> totaldish, menu* currentmenu, inventory totalinventory);

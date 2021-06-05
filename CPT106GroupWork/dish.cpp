@@ -14,11 +14,11 @@ double dish::grossProfit()
 {
 	double grossProfit = 0.0;
 	double cost = 0;
-	for (size_t i = 0; i < materials.size(); i++)
+	for (int i = 0; i < materials.size(); i++)
 	{
 		cost += currentInventory->getPrice(materials[i]);
 	}
-	grossProfit = this->price - cost;
+	grossProfit = price - cost;
 	return grossProfit;
 }
 
@@ -32,7 +32,7 @@ void dish::isOrdered()
 
 void dish::cancelOrdered() {
 	for (size_t i = 0; i < materials.size(); i++) {
-		currentInventory->add(materials[i], 1);
+		currentInventory->purchase(materials[i], 1);
 	}
 }
 
