@@ -30,6 +30,12 @@ void dish::isOrdered()
 	}
 }
 
+void dish::cancelOrdered() {
+	for (size_t i = 0; i < materials.size(); i++) {
+		currentInventory->add(materials[i], 1);
+	}
+}
+
 string dish::getname() {
 	return name;
 }
