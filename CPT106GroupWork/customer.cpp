@@ -2,8 +2,24 @@
 
 void customer::order(dish newDish)
 {
-	if (dishList->getMenuList().count(newDish) == 0) {
+		dishList->addDish(newDish);
+}
+
+void customer::deletedish(dish deletedish) {
+		dishList->deleteDish(deletedish);
+}
+
+void customer::displaymenu() {
+	if (dishList->getMenuList().size()) {
+		dishList->showmenu();
+	}
+	else {
 		throw NoDishException();
 	}
-	orderList[newDish]++;
+ }
+
+double customer::check() {
+	 cout << dishList->gettotalPrice();
+	 return dishList->gettotalGrossProfit();
+	 dishList->clear();
 }
