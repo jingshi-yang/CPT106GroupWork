@@ -26,10 +26,10 @@ int main()
     double price, materialinventory;
     string searchmaterial, addmaterial, modifymaterial;
     cout << "Welcome to Restaurant Management System" << endl;
-    do
+   do
     {
         cout << "What would you like to log in as?" << endl
-             << "1. Manager\t2. Chef\t3. Customer\t4. exit\t1. Show menu\t2. Order\t3. Checkout" << endl;
+             << "1. Manager\t2. Chef\t3. Customer\t4. exit\t" << endl;
         cin >> choseJob;
         switch (choseJob)
         {
@@ -39,7 +39,10 @@ int main()
             cout << "Please input your manager id:\n";
             cin >> id;
             user = new manager(name,id);
-            if(user->Login(managerlist.readAllStream())){cout<< "The manager name does not exist or the id is incorrect";}
+            if(user->Login(managerlist.readAllStream()))
+            {
+                cout<< "The manager name does not exist or the id is incorrect";
+            }
             finishLog = user->Login(managerlist.readAllStream());
             break;
         case 2: //Chef
@@ -48,7 +51,10 @@ int main()
             cout << "Please input your chef id:\n";
             cin >> id;
             user = new chef(name, id);
-            if (user->Login(cheflist.readAllStream())) { cout << "The chef name does not exist or the id is incorrect"; }
+            if (user->Login(cheflist.readAllStream()))
+            {
+                cout << "The chef name does not exist or the id is incorrect"; 
+            }
             finishLog = user->Login(cheflist.readAllStream());
             break;
         case 3: //customer
