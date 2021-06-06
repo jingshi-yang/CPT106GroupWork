@@ -21,7 +21,7 @@ vector<dish> FileIO::readdish(inventory totalinventory) {
 	string name, material;
 	double price;
 	fin.open(filename);
-	fin._Seekbeg();
+	fin.seekg(0,ios::beg);
 	while (fin >> name >> price) {
 		while (fin.get() != '\n') {
 			fin >> material;
