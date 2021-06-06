@@ -9,8 +9,8 @@ private:
 	// Use a set to store the dishes in menu to avoid repeat
 	vector<dish> menuList;
 	vector<int> ordernumber;
-	double totalPrice;
-	double totalGrossProfit;
+	double totalPrice = 0;
+	double totalGrossProfit = 0;
 public:
 	menu();
 	menu(vector<dish> dishlist, inventory totalinventory);

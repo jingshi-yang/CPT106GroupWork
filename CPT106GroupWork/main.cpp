@@ -248,7 +248,7 @@ int main()
             cout << "Invalid input, please enter an integer between 1 and " << No << endl;
             break;
         }
-    } while (theEnd = false);
+    } while (theEnd == false);
 
  //   inventoryfile.writeinventoryToFile(matetials,myinventory);
     dishfile.writedishToFile(mydish);
