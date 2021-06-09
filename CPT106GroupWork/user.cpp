@@ -49,14 +49,17 @@ int user::searchMaterial(string material, inventory totalinventory)
 
 void user::newDish(dish newdish, vector<dish> totaldish, menu* currentmenu, inventory totalinventory)
 {
+	throw NoPermissionException();
 }
 
 void user::deletedish(dish deletedish)
 {
+	throw NoPermissionException();
 }
 
 void user::displaymenu()
 {
+	throw NoPermissionException();
 }
 
 double user::check()

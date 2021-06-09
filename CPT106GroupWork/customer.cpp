@@ -11,6 +11,7 @@ void customer::order(dish newDish)
 
 void customer::deletedish(dish deletedish) {
 		dishList.deleteDish(deletedish);
+		deletedish.cancelOrdered();
 }
 
 void customer::displaymenu() {

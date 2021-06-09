@@ -10,7 +10,7 @@ ifstream FileIO::readAllStream()
 	ifstream fin;
 	fin.unsetf(ios::skipws);
 	fin.open(filename, ios::in);
-	fin.close();
+//	fin.close();
 	return fin;
 }
 
@@ -29,6 +29,7 @@ vector<dish> FileIO::readdish(inventory totalinventory) {
 		}
 		dish newdish(name, materials, totalinventory, price);
 		readdish.push_back(newdish);
+		materials.clear();
 	}
 	return readdish;
 }
@@ -46,12 +47,11 @@ void FileIO::writeinventoryToFile(vector<string> material, inventory Inventory) 
 void FileIO::writedishToFile(vector<dish> dishlist) {
 	ofstream fout;
 	fout.open(filename);
-	fout << "Dish price materials\n";
 	for (int i = 0; i < dishlist.size(); i++) {
 		vector<string> materials = dishlist[i].getmaterials();
-		fout << dishlist[i].getname() << dishlist[i].getprice();
+		fout << dishlist[i].getname() << "\t" << dishlist[i].getprice() << "\t";
 		for(int j = 0;j<materials.size();j++){
-			fout << materials[i] << " ";
+			fout << materials[j] << " ";
 		}
 		fout << endl;
 	}

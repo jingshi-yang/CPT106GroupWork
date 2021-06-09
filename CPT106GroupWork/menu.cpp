@@ -10,12 +10,12 @@ menu::menu() {
 menu::menu(vector<dish> dishList, inventory totalinventory)
 {
 	vector<string> materials;
-	bool success = false;
+	bool success = true;
 	for (int i = 0; i < dishList.size(); i++)
 	{
 		materials = dishList[i].getmaterials();
 		for (int j = 0; j < materials.size(); j++) {
-			if (!(totalinventory.isExisted(materials[i])&&totalinventory.getInventory(materials[i])>0))
+			if ((totalinventory.isExisted(materials[j])&&totalinventory.getInventory(materials[j])>0))
 			{
 				success = false;
 				break;
@@ -23,6 +23,7 @@ menu::menu(vector<dish> dishList, inventory totalinventory)
 		}
 		if (success) {
 			menuList.push_back(dishList[i]);
+			ordernumber.push_back(1);
 		}
 	}
 }
@@ -54,11 +55,12 @@ void menu::deleteDish(dish deletedDish)
 			if(ordernumber[distance(menuList.begin(), iter)]>1){
 				menuList.erase(iter);
 				deletedDish.cancelOrdered();
+				return;
 			}
 			else {
 				menuList.erase(iter);
 				ordernumber.erase(iter1);
-				deletedDish.cancelOrdered();
+				return;
 			}
 		}
 		iter1++;
@@ -70,7 +72,7 @@ void menu::showmenu() {
 	cout << "--------------------------------------\n";
 	cout << "|No.|        name        |count|price|\n";
 	for (int i = 0; i < menuList.size(); i++) {
-		cout << "|" << setw(2) << i << ".|" << setw(20) << menuList[i].getname() << "|" << setw(5) << ordernumber[i] << "|" << setw(5) << menuList[i].getprice()<<" |" << endl;
+		cout << "|" << setw(2) << i << ".|" << setw(20) << menuList[i].getname() << "|" << setw(5) << ordernumber[i] << "|" << setw(5) << menuList[i].getprice()<<"|" << endl;
 	}
 	cout << "--------------------------------------\n";
 }
