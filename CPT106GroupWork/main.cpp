@@ -262,7 +262,7 @@ int main()
             try
             {
                 cout << "Please input material name:\n";
-                cin >> searchmaterial；
+                cin >> searchmaterial;
                 cout << searchmaterial <<" number is "<< myinventory.getInventory(searchmaterial)<<endl;
                 system("pause");
             }
