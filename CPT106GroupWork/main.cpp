@@ -15,34 +15,52 @@ int main()
     user loginuser;
     FileIO inventoryfile("inventory.txt");
     FileIO dishfile("dish.txt");
-    FileIO cheflist("chef.txt");
-    FileIO managerlist("managerlist.txt");
     FileIO Loginlist("Loginlist.txt");
     inventory myinventory(inventoryfile.readAllStream());
     vector<dish> mydish = dishfile.readdish(myinventory);
     menu mymenu(mydish, myinventory), ordermenu;
     bool success = true;
     string name, id;
-    double Grossprofit;
-    double price;
+    double Grossprofit = 0.0;
+    double price = 0.0;
     int materialinventory;
     string searchmaterial, addmaterial, modifymaterial;
-    cout << "Welcome to Restaurant Management System" << endl;
-    cout << "Please login: \n(if you all a custemer, just input enter to login as a custemer)" << endl;
-    job userjob= loginuser.Login(Loginlist.readAllStream());
-    if (userjob == man) {
-        User = new manager();
-    }
-    else if (userjob == che) {
-        User = new chef();
-    }
-    else {
-        User = new customer();
-    }
+    job userjob;
+    do
+    {
+        system("cls");
+        cout << "-------------------------------------------\n";
+        cout << "|" << setw(43) << " |" << endl;
+        cout << "| Welcome to Restaurant Management System |" << endl;
+        cout << "|" << setw(43) << " |" << endl;
+        cout << "|------------------------------------------|\n";
+        cout << setw(43) << setiosflags(ios::left) << "|Please login: " << "|\n";
+        cout << setw(43) << setiosflags(ios::left) << "|(Input anything login as a custemer)" << "|\n";
+        cout << "-------------------------------------------\n";
+        try
+        {
+            userjob = loginuser.Login(Loginlist.readAllStream());
+            if (userjob == man) {
+                User = new manager();
+            }
+            else if (userjob == che) {
+                User = new chef();
+            }
+            else {
+                User = new customer();
+            }
+            success = false;
+        }
+        catch (const char* expect)
+        {
+            cout << expect;
+        }
+    } while (success);
     system("cls");
     cout << "Login successful" << endl;
     system("pause");
     int choseAction;
+    success = true;
     do
     {
         system("cls");
@@ -51,7 +69,6 @@ int main()
         //customer level
         cout << "| " << No++ << "." << setw(12) << "exit "<< "|\n";
         cout << "| " << No++ << "." << setw(12) << "Order" << "|\n";
-        //const int choose = 0;
         //chef level
         if (userjob == che || userjob == man) {
         cout << "| " << No++ << "." << setw(12) << "Add a dish "<<"|\n";
@@ -60,12 +77,12 @@ int main()
         cout << "| " << No++ << "." << setw(12) << "Search material "<<"|\n";
         cout << "| " << No++ << "." << setw(12) << "show materials "<<"|\n";
         }
-        //const int choose = 1;
         //manager level
         if (userjob == man) {
         cout << "|" << No++ << "." << setw(12) << "add a material "<<"|\n";
         cout << "|" << No++ << "." << setw(12) << "delete a material "<<" | \n";
         cout << "|" << No++ << "." << setw(12) << "modify a material "<<"|\n";
+        cout << "|" << No++ << "." << setw(12) << "showGrossprofit " << "|\n";
         }
         cout << " ---------------\n";
         cout << "Please choose what to do next: \n";
@@ -83,7 +100,7 @@ int main()
                 system("cls");
                 mymenu.showmenu();
                 cout << "Please choose what to do next:\n";
-                cout << "1. Order a dish\n2. Cancel a dish\n3. show oederd menu\n4. check\n";
+                cout << "1. Order a dish\n2. Cancel a dish\n3. show oederd menu\n4. check(exit)\n";
                 cin >> orderact;
                 switch (orderact)
                 {
@@ -101,31 +118,31 @@ int main()
                     }
                     break;
                 case 2: // Cancel a dish
-                    cout << "Please type dish No to delete:\n";
-                    cin >> dishact;
                     try
                     {
+                        cout << "Please type dish No to delete:\n";
+                        cin >> dishact;
                         User->deletedish(mymenu.getMenuList()[dishact]);
+                        mymenu.refresh(myinventory);
                     }
                     catch (const char* except)
                     {
                         cout << except << endl;
                         break;
                     }
-                    mymenu.refresh(myinventory);
                     break;
                 case 3: //show ordered menu
                     try
                     {
                         User->displaymenu();
                         system("pause");
+                        mymenu.refresh(myinventory);
                     }
                     catch (const char* except)
                     {
                         cout << except << endl;
                         break;
                     }
-                    mymenu.refresh(myinventory);
                     break;
                 case 4: //check
                     Grossprofit = User->check();
@@ -163,14 +180,14 @@ int main()
             break;
         case 3: //3. Delete meal
             system("cls");
-            cout << "-----------------------------------------------------";
-            cout << "|No.|        name        |count|price|";
+            cout << "-----------------------------------------------------\n";
+            cout << "|No.|        name        |count|price|\n";
             for (int i = 0; i < mydish.size(); i++) {
                 cout << "|" << setw(2) << i << ".|" << setw(20) << mydish[i].getname() << "|" << setw(5) << mydish[i].getprice() << "|" << setw(20) << mydish[i].getmaterials()[0] << " |" << endl;
                 for (int j = 1; j < mydish[i].getmaterials().size(); j++) {
                     cout << "|" << setw(4) << ".|" << setw(21) << "|" << setw(6) << "|" << setw(20) << mydish[i].getmaterials()[0] << " |" << endl;
                 }
-                cout << "----------------------------------------------------";
+                cout << "----------------------------------------------------\n";
             }
             cout << "Please input delete dish:";
             cin >> dishact;
@@ -185,10 +202,10 @@ int main()
             mymenu.showmenu();
             break;
         case 5: //Search material
-            cout << "Please input material name:\n";
-            cin >> searchmaterial;
             try
             {
+                cout << "Please input material name:\n";
+                cin >> searchmaterial;
                 cout << searchmaterial << myinventory.getInventory(searchmaterial);
             }
             catch (const char* except)
@@ -199,14 +216,14 @@ int main()
         case 6: //show materials
             break;
         case 7: //add materials
-            cout << "Please input material name:\n";
-            cin >> addmaterial;
-            cout << "Please input material inventory:";
-            cin >> materialinventory;
-            cout << "Please input material price";
-            cin >> price;
             try
             {
+                cout << "Please input material name:\n";
+                cin >> addmaterial;
+                cout << "Please input material inventory:\n";
+                cin >> materialinventory;
+                cout << "Please input material price:\n";
+                cin >> price;
                 myinventory.add(addmaterial, materialinventory, price);
             }
             catch (const char* except)
@@ -217,11 +234,18 @@ int main()
         case 8: //delete materials
             break;
         case 9: //modify a material
-            cout << "Please input modify material name:\n";
-            cin >> modifymaterial;
-            cout << "Please input modify material price:\n";
-            cin >> price;
-            myinventory.changePrice(modifymaterial, price);
+            try
+            {
+                cout << "Please input modify material name:\n";
+                cin >> modifymaterial;
+                cout << "Please input modify material price:\n";
+                cin >> price;
+                myinventory.changePrice(modifymaterial, price);
+            }
+            catch (const char expect)
+            {
+                cout << expect << endl;
+            }
             break;
         default:
             cout << "Invalid input, please enter an integer between 1 and " << No << endl;
@@ -229,62 +253,7 @@ int main()
         }
     } while (success);
 
- //   inventoryfile.writeinventoryToFile(matetials,myinventory);
+//    inventoryfile.writeinventoryToFile(matetials,myinventory);
     dishfile.writedishToFile(mydish);
-        //case 2: //chef
-        //    do
-        //    {
-        //        cout << "1. Search\t2. Add to menu\t3. Delete meal" << endl;
-        //        cin >> choseAction;
-        //        switch (choseAction)
-        //        {
-        //        case 1:
-        //        {
-        //            string targetmaterial;
-        //        cin >> targetmaterial;
-        //        user->searchMaterial(targetmaterial, searchinventory);
-        //        //1. Search
-        //        break;
-        //        }
-        //        case 2:
-        //            user->newDish(*currentmenu,currentinventory);
-        //            //2. Add to menu
-        //            break;
-        //        case 3:
-
-        //            //3. Delete meal
-        //            break;
-        //        default:
-        //            cout << "Invalid input, please enter an integer between 1 and 3" << endl;
-        //            break;
-        //        }
-        //    } while (theEnd = false);
-
-        //    break;
-        //case 3: //customer
-        //    do
-        //    {
-        //        cout << "1. Show menu\t2. Order\t3. Checkout" << endl;
-        //        cin >> choseAction;
-        //        switch (choseAction)
-        //        {
-        //        case 1:
-        //            //1. Show menu
-        //            break;
-        //        case 2:
-        //            order(newDish);
-        //            //2. Order
-        //            break;
-        //        case 3:
-        //            //3. Checkout
-        //            break;
-        //        default:
-        //            cout << "Invalid input, please enter an integer between 1 and 3" << endl;
-        //            break;
-        //        }
-        //    } while (theEnd = false);
-
-        //    break;
-        //}
     return 0;
 }
