@@ -1,8 +1,8 @@
 #include "chef.h"
-chef::chef(string username, string user_id)
+chef::chef()
 {
 }
-user::job chef::Login(ifstream input) {
+job chef::Login(ifstream input) {
 	string uid;
 	string pw;
 	cout << "Please enter your user id." << endl;
@@ -10,7 +10,7 @@ user::job chef::Login(ifstream input) {
 	cout << "Please enter your user password." << endl;
 	cin >> pw;
 	map<string, string> users;
-	map<string, user::job> usergroup;
+	map<string, job> usergroup;
 	string tempName, tempPW, tempUsergroup;
 	while (input.get() != EOF)
 	{
@@ -18,11 +18,11 @@ user::job chef::Login(ifstream input) {
 		users[tempName] = tempPW;
 		if (tempUsergroup == "manager")
 		{
-			usergroup[uid] = manager;
+			usergroup[uid] = man;
 		}
 		else
 		{
-			usergroup[uid] = user::chef;
+			usergroup[uid] = che;
 		}
 	}
 	if (users[uid] == pw)
@@ -30,7 +30,7 @@ user::job chef::Login(ifstream input) {
 		return usergroup[uid];
 	}
 
-	return customer;
+	return cus;
 }
 
 int chef::searchMaterial(string material,inventory totalinventory) {
@@ -87,4 +87,8 @@ void chef::newDish(dish newdish, vector<dish> totaldish, menu *currentmenu,inven
 	//	dish newdish(dishname, totalmaterial, totalinventory, price);
 	//	currentmenu->addDish(newdish);
 	//}
+}
+
+job chef::returnjob() {
+	return che;
 }

@@ -67,12 +67,12 @@ void menu::deleteDish(dish deletedDish)
 }
 
 void menu::showmenu() {
-	cout << "--------------------------------------";
-	cout << "|No.|        name        |count|price|";
+	cout << "--------------------------------------\n";
+	cout << "|No.|        name        |count|price|\n";
 	for (int i = 0; i < menuList.size(); i++) {
 		cout << "|" << setw(2) << i << ".|" << setw(20) << menuList[i].getname() << "|" << setw(5) << ordernumber[i] << "|" << setw(5) << menuList[i].getprice()<<" |" << endl;
 	}
-	cout << "--------------------------------------";
+	cout << "--------------------------------------\n";
 }
 
 double menu::gettotalPrice() {

@@ -1,11 +1,9 @@
 #include "manager.h"
 
-manager::manager(string username, string user_id) {
-	this->username = username;
-	this->user_id = user_id;
+manager::manager() {
 }
 
-user::job manager::Login(ifstream input) {
+job manager::Login(ifstream input) {
 	string uid;
 	string pw;
 	cout << "Please enter your user id." << endl;
@@ -13,7 +11,7 @@ user::job manager::Login(ifstream input) {
 	cout << "Please enter your user password." << endl;
 	cin >> pw;
 	map<string, string> users;
-	map<string, user::job> usergroup;
+	map<string, job> usergroup;
 	string tempName, tempPW, tempUsergroup;
 	while (input.get() != EOF)
 	{
@@ -21,11 +19,11 @@ user::job manager::Login(ifstream input) {
 		users[tempName] = tempPW;
 		if (tempUsergroup == "manager")
 		{
-			usergroup[uid] = user::manager;
+			usergroup[uid] = man;
 		}
 		else
 		{
-			usergroup[uid] = chef;
+			usergroup[uid] = che;
 		}
 	}
 	if (users[uid] == pw)
@@ -33,12 +31,12 @@ user::job manager::Login(ifstream input) {
 		return usergroup[uid];
 	}
 
-	return customer;
+	return cus;
 }
 
 void manager::order(dish newDish)
 {
-	dishList->addDish(newDish);
+	dishList.addDish(newDish);
 }
 
 int manager::searchMaterial(string material, inventory totalinventory) {
@@ -71,12 +69,12 @@ void manager::newDish(dish newdish, vector<dish> totaldish, menu* currentmenu, i
 }
 
 void manager::deletedish(dish deletedish) {
-	dishList->deleteDish(deletedish);
+	dishList.deleteDish(deletedish);
 }
 
 void manager::displaymenu() {
-	if (dishList->getMenuList().size()) {
-		dishList->showmenu();
+	if (dishList.getMenuList().size()) {
+		dishList.showmenu();
 	}
 	else {
 		throw NoDishException();
@@ -84,7 +82,11 @@ void manager::displaymenu() {
 }
 
 double manager::check() {
-	dishList->gettotalPrice();
-	return dishList->gettotalGrossProfit();
-	dishList->clear();
+	dishList.gettotalPrice();
+	return dishList.gettotalGrossProfit();
+	dishList.clear();
+}
+
+job manager::returnjob() {
+	return man;
 }

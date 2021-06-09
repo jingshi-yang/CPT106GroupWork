@@ -1,15 +1,10 @@
 #include "user.h"
 
-user::user(string username, string user_id) {
-	this->username = username;
-	this->user_id = user_id;
+user::user() {
 }
 
-user::user()
-{
-}
 
-user::job user::Login(ifstream input)
+job user::Login(ifstream input)
 {
 	string uid;
 	string pw;
@@ -18,7 +13,7 @@ user::job user::Login(ifstream input)
 	cout << "Please enter your user password." << endl;
 	cin >> pw;
 	map<string, string> users;
-	map<string, user::job> usergroup;
+	map<string, job> usergroup;
 	string tempName, tempPW, tempUsergroup;
 	while (input.get() != EOF)
 	{
@@ -26,19 +21,20 @@ user::job user::Login(ifstream input)
 		users[tempName] = tempPW;
 		if (tempUsergroup == "manager")
 		{
-			usergroup[uid] = manager;
+			usergroup[uid] = man;
 		}
 		else
 		{
-			usergroup[uid] = chef;
+			usergroup[uid] = che;
 		}
 	}
+	user_id = uid;
 	if (users[uid] == pw)
 	{
 		return usergroup[uid];
 	}
 
-	return customer;
+	return cus;
 }
 
 void user::order(dish newDish)
@@ -66,4 +62,8 @@ void user::displaymenu()
 double user::check()
 {
 	return 0.0;
+}
+job user::returnjob()
+{
+	return job();
 }

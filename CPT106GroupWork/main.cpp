@@ -11,96 +11,71 @@ using namespace std;
 
 int main()
 {
-    user *user = nullptr;
+    user *User = nullptr;
+    user loginuser;
     FileIO inventoryfile("inventory.txt");
     FileIO dishfile("dish.txt");
     FileIO cheflist("chef.txt");
     FileIO managerlist("managerlist.txt");
+    FileIO Loginlist("Loginlist.txt");
     inventory myinventory(inventoryfile.readAllStream());
     vector<dish> mydish = dishfile.readdish(myinventory);
-    menu mymenu(mydish, myinventory);
-    bool finishLog = false;
+    menu mymenu(mydish, myinventory), ordermenu;
+    bool success = true;
     string name, id;
-    int choseJob;
     double Grossprofit;
-    double price, materialinventory;
+    double price;
+    int materialinventory;
     string searchmaterial, addmaterial, modifymaterial;
     cout << "Welcome to Restaurant Management System" << endl;
-   do
-    {
-        cout << "What would you like to log in as?" << endl
-             << "1. Manager\t2. Chef\t3. Customer\t4. exit\t" << endl;
-        cin >> choseJob;
-        switch (choseJob)
-        {
-        case 1: //login in as manager
-            cout << "Please input your manager name:\n";
-            cin >> name;
-            cout << "Please input your manager id:\n";
-            cin >> id;
-            user = new manager(name,id);
-            if(user->Login(managerlist.readAllStream()))
-            {
-                cout<< "The manager name does not exist or the id is incorrect";
-            }
-            finishLog = user->Login(managerlist.readAllStream());
-            break;
-        case 2: //Chef
-            cout << "Please input your chef name:\n";
-            cin >> name;
-            cout << "Please input your chef id:\n";
-            cin >> id;
-            user = new chef(name, id);
-            if (user->Login(cheflist.readAllStream()))
-            {
-                cout << "The chef name does not exist or the id is incorrect"; 
-            }
-            finishLog = user->Login(cheflist.readAllStream());
-            break;
-        case 3: //customer
-            user = new customer(mymenu);
-            finishLog = true;
-            break;
-        case 4: //exit
-            exit(0);
-        default:
-            cout << "Invalid input, please enter an integer between 1 and 4" << endl;
-            break;
-        }
-    } while (finishLog == false);
+    cout << "Please login: \n(if you all a custemer, just input enter to login as a custemer)" << endl;
+    job userjob= loginuser.Login(Loginlist.readAllStream());
+    if (userjob == man) {
+        User = new manager();
+    }
+    else if (userjob == che) {
+        User = new chef();
+    }
+    else {
+        User = new customer();
+    }
     system("cls");
     cout << "Login successful" << endl;
-    bool theEnd = false;
+    system("pause");
     int choseAction;
-    //cout << "What do you want to do?" << endl;
-    //switch (choseJob)
-    //{
-    //case 1: //1. Order
     do
     {
         system("cls");
         int No = 0;
-        cout << "---------------";
+        cout << " ---------------\n";
         //customer level
-        cout << "|" << No++ << "." << setw(12) << "Order |\t";
+        cout << "| " << No++ << "." << setw(12) << "exit "<< "|\n";
+        cout << "| " << No++ << "." << setw(12) << "Order" << "|\n";
         //const int choose = 0;
         //chef level
-        cout << "|" << No++ << "." << setw(12) << "Add a dish |\t";
-        cout << "|" << No++ << "." << setw(12) << "Delete a dish |\t";
-        cout << "|" << No++ << "." << setw(12) << "Show menu |\t";
-        cout << "|" << No++ << "." << setw(12) << "Search material|\t";
-        cout << "|" << No++ << "." << setw(12) << "show materials |\t";
+        if (userjob == che || userjob == man) {
+        cout << "| " << No++ << "." << setw(12) << "Add a dish "<<"|\n";
+        cout << "| " << No++ << "." << setw(12) << "Delete a dish "<<"|\n";
+        cout << "| " << No++ << "." << setw(12) << "Show menu  "<<"|\n";
+        cout << "| " << No++ << "." << setw(12) << "Search material "<<"|\n";
+        cout << "| " << No++ << "." << setw(12) << "show materials "<<"|\n";
+        }
         //const int choose = 1;
         //manager level
-        cout << "|" << No++ << "." << setw(12) << "add a material |\t";
-        cout << "|" << No++ << "." << setw(12) << "delete a material |\t";
-        cout << "|" << No++ << "." << setw(12) << "modify a material |\t";
-        cout << "---------------";
+        if (userjob == man) {
+        cout << "|" << No++ << "." << setw(12) << "add a material "<<"|\n";
+        cout << "|" << No++ << "." << setw(12) << "delete a material "<<" | \n";
+        cout << "|" << No++ << "." << setw(12) << "modify a material "<<"|\n";
+        }
+        cout << " ---------------\n";
+        cout << "Please choose what to do next: \n";
         cin >> choseAction;
         switch (choseAction)
         {
+        case 0:
+            success = false;
+            break;
         case 1:
-        {
             int orderact;
             int dishact;
             do
@@ -117,7 +92,7 @@ int main()
                     cin >> dishact;
                     try
                     {
-                        user->order(mymenu.getMenuList()[dishact]);
+                        User->order(mymenu.getMenuList()[dishact]);
                     }
                     catch (const char* expect)
                     {
@@ -130,7 +105,7 @@ int main()
                     cin >> dishact;
                     try
                     {
-                        user->deletedish(mymenu.getMenuList()[dishact]);
+                        User->deletedish(mymenu.getMenuList()[dishact]);
                     }
                     catch (const char* except)
                     {
@@ -142,7 +117,7 @@ int main()
                 case 3: //show ordered menu
                     try
                     {
-                        user->displaymenu();
+                        User->displaymenu();
                         system("pause");
                     }
                     catch (const char* except)
@@ -153,7 +128,7 @@ int main()
                     mymenu.refresh(myinventory);
                     break;
                 case 4: //check
-                    Grossprofit = user->check();
+                    Grossprofit = User->check();
                     system("pause");
                     break;
                 default:
@@ -161,7 +136,6 @@ int main()
                 }
             } while (orderact != 4);
             break;
-        }
         case 2:   //2. Add to menu
             try
             {
@@ -180,7 +154,7 @@ int main()
                     cin >> success;
                 }
                 dish newdish(dishname, totalmaterial, myinventory, price);
-                user->newDish(newdish, mydish, &mymenu, myinventory);
+                User->newDish(newdish, mydish, &mymenu, myinventory);
             }
             catch (const char* except)
             {
@@ -188,7 +162,6 @@ int main()
             }
             break;
         case 3: //3. Delete meal
-            int dishact;
             system("cls");
             cout << "-----------------------------------------------------";
             cout << "|No.|        name        |count|price|";
@@ -254,7 +227,7 @@ int main()
             cout << "Invalid input, please enter an integer between 1 and " << No << endl;
             break;
         }
-    } while (theEnd == false);
+    } while (success);
 
  //   inventoryfile.writeinventoryToFile(matetials,myinventory);
     dishfile.writedishToFile(mydish);

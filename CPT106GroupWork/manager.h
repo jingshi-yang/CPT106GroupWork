@@ -5,9 +5,9 @@ class manager :
 {
 private:
     map<dish, int> orderList;
-    menu* dishList;
+    menu dishList;
 public:
-    manager(string username, string user_id);
+    manager();
     job Login(ifstream input);
     void order(dish newDish);
     int searchMaterial(string material, inventory totalinventory);
@@ -15,5 +15,6 @@ public:
     void deletedish(dish deletedish);
     void displaymenu();
     double check();
+    job returnjob();
 };
 

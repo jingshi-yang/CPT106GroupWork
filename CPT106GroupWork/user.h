@@ -12,20 +12,20 @@ struct NoPermissionException :
 	}
 };
 
+enum job
+{
+	man, che, cus
+};
+
 class user
 
 {
 protected:
 	string user_id;
-	string username;
-	enum job
-	{
-		manager, chef, customer
-	};
-
+	job user_job;
 
 public:
-	user(string username, string user_id);
+	//user(string username, string user_id, job user_job);
 	user();
 	virtual job Login(ifstream input);
 	virtual void order(dish newDish);
@@ -34,6 +34,6 @@ public:
 	virtual void deletedish(dish deletedish);
 	virtual void displaymenu();
 	virtual double check();
-
+	virtual job returnjob();
 };
 

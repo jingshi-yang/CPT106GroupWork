@@ -6,13 +6,14 @@ class customer :
 {
 private:
  //   map<dish, int> orderList;
-    menu* dishList;
+    menu dishList;
 public:
-    customer(menu& dishlist);
+    customer();
     void order(dish newDish);
     void deletedish(dish deletedish);
     void displaymenu();
     double check();
     job Login();
+    job returnjob();
 };
 

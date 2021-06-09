@@ -1,22 +1,21 @@
 #include "customer.h"
 
-customer::customer(menu& dishlist)
+customer::customer()
 {
-	*dishList = dishlist;
 }
 
 void customer::order(dish newDish)
 {
-		dishList->addDish(newDish);
+		dishList.addDish(newDish);
 }
 
 void customer::deletedish(dish deletedish) {
-		dishList->deleteDish(deletedish);
+		dishList.deleteDish(deletedish);
 }
 
 void customer::displaymenu() {
-	if (dishList->getMenuList().size()) {
-		dishList->showmenu();
+	if (dishList.getMenuList().size()) {
+		dishList.showmenu();
 	}
 	else {
 		throw NoDishException();
@@ -24,12 +23,16 @@ void customer::displaymenu() {
  }
 
 double customer::check() {
-	 cout << dishList->gettotalPrice();
-	 return dishList->gettotalGrossProfit();
-	 dishList->clear();
+	 cout << dishList.gettotalPrice();
+	 return dishList.gettotalGrossProfit();
+	 dishList.clear();
 }
 
-user::job customer::Login()
+job customer::Login()
 {
-	return user::customer;
+	return cus;
+}
+
+job customer::returnjob() {
+	return cus;
 }
