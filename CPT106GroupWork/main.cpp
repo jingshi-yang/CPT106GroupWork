@@ -262,8 +262,8 @@ int main()
             try
             {
                 cout << "Please input material name:\n";
-                cin >> searchmaterial;
-                cout << searchmaterial << myinventory.getInventory(searchmaterial);
+                cin >> searchmaterial；
+                cout << searchmaterial <<" number is "<< myinventory.getInventory(searchmaterial)<<endl;
                 system("pause");
             }
             catch (const exception& e)
