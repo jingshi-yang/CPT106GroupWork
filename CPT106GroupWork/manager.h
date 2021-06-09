@@ -8,7 +8,6 @@ private:
     menu dishList;
 public:
     manager();
-    job Login(ifstream input);
     void order(dish newDish);
     int searchMaterial(string material, inventory totalinventory);
     void newDish(dish newdish, vector<dish> totaldish, menu* currentmenu, inventory totalinventory);

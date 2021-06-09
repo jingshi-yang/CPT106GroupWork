@@ -1,4 +1,5 @@
 #include "FileIO.h"
+#include "user.h"
 
 FileIO::FileIO(string name)
 {
@@ -32,6 +33,70 @@ vector<dish> FileIO::readdish(inventory totalinventory) {
 		materials.clear();
 	}
 	return readdish;
+}
+
+map<string, int> FileIO::readInventoryMaterials()
+{
+	ifstream fin;
+	map<string, int> materials;
+	string tempName;
+	int materialAmount;
+	double price;
+	fin.open(filename);
+	while (fin >> tempName >> materialAmount >> price) {
+		materials[tempName] = materialAmount;
+	}
+	fin.close();
+	return materials;
+}
+
+map<string, double> FileIO::readInventoryPrices()
+{
+	ifstream fin;
+	map<string, double> prices;
+	string tempName;
+	int materialAmount;
+	double price;
+	fin.open(filename);
+	while (fin >> tempName >> materialAmount >> price) {
+		prices[tempName] = price;
+	}
+	fin.close();
+	return prices;
+}
+
+map<string, string> FileIO::readUsersPw()
+{
+	map<string, string> userPw;
+	string userName, userpw, userJob;
+	ifstream fin;
+	fin.open(filename);
+	while (fin >> userName >> userpw >> userJob)
+	{
+		userPw[userName] = userpw;
+	}
+	return userPw;
+}
+
+map<string, job> FileIO::readUsersJob()
+{
+	map<string, job> jobs;
+	string userName, userpw, userJob;
+	ifstream fin;
+	fin.open(filename);
+	while (fin >> userName >> userpw >> userJob)
+	{
+		if (userJob == "che")
+		{
+			jobs[userName] = che;
+		}
+		else if (userJob == "man")
+		{
+			jobs[userName] = man;
+		}
+	}
+	fin.close();
+	return jobs;
 }
 
 void FileIO::writeinventoryToFile(vector<string> material, inventory Inventory) {

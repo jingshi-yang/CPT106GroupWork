@@ -9,14 +9,10 @@ bool inventory::isExisted(string key)
 	return true;
 }
 
-inventory::inventory(ifstream input)
+inventory::inventory(map<string, int> newMaterials, map<string, double> newPrices)
 {
-	input.setf(ios::skipws);
-	string tempName;
-	while (input.get() != EOF)
-	{
-		input >> tempName >> materials[tempName] >> prices[tempName];
-	}
+	materials = newMaterials;
+	prices = newPrices;
 }
 
 void inventory::add(string key, int value, double price)
@@ -48,6 +44,16 @@ void inventory::changePrice(string key, double newPrice)
 	prices[key] = newPrice;
 }
 
+void inventory::deleteMaterial(string key)
+{
+	if (materials.find(key) == materials.end())
+	{
+		throw NoMaterialsException();
+	}
+	materials.erase(key);
+	prices.erase(key);
+}
+
 int inventory::getInventory(string key)
 {
 	if (!isExisted(key)) throw NoMaterialsException();
@@ -58,4 +64,19 @@ double inventory::getPrice(string key)
 {
 	if (!isExisted(key)) throw NoMaterialsException();
 	return prices[key];
+}
+
+void inventory::showMaterials()
+{
+	map<string, int>::iterator it;
+	int count = 0;
+	it = materials.begin();
+	cout << "--------------------------------------\n";
+	cout << "|No.|        name        |count|price|\n";
+	while (it != materials.end()) {
+		cout << "|" << setw(2) << count << ".|" << setw(20) << it->first << "|" << setw(5) << it->second << "|" << setw(5) << prices[it->first] << "|" << endl;
+		count++;
+		it++;
+	}
+	cout << "--------------------------------------\n";
 }

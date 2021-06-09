@@ -142,6 +142,7 @@
     <ClInclude Include="chef.h" />
     <ClInclude Include="customer.h" />
     <ClInclude Include="dish.h" />
+    <ClInclude Include="Exceptions.h" />
     <ClInclude Include="FileIO.h" />
     <ClInclude Include="manager.h" />
     <ClInclude Include="inventory.h" />

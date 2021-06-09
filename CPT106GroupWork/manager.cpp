@@ -3,37 +3,6 @@
 manager::manager() {
 }
 
-job manager::Login(ifstream input) {
-	string uid;
-	string pw;
-	cout << "Please enter your user id." << endl;
-	cin >> uid;
-	cout << "Please enter your user password." << endl;
-	cin >> pw;
-	map<string, string> users;
-	map<string, job> usergroup;
-	string tempName, tempPW, tempUsergroup;
-	while (input.get() != EOF)
-	{
-		input >> tempName >> tempPW >> tempUsergroup;
-		users[tempName] = tempPW;
-		if (tempUsergroup == "manager")
-		{
-			usergroup[uid] = man;
-		}
-		else
-		{
-			usergroup[uid] = che;
-		}
-	}
-	if (users[uid] == pw)
-	{
-		return usergroup[uid];
-	}
-
-	return cus;
-}
-
 void manager::order(dish newDish)
 {
 	dishList.addDish(newDish);

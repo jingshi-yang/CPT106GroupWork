@@ -1,16 +1,10 @@
 #pragma once
 #include <string>
+#include <conio.h>
+#include "Exceptions.h"
 #include "menu.h"
 
 using namespace std;
-
-struct NoPermissionException :
-	public exception
-{
-	const char* what() const throw() {
-		return "You do not have permission.";
-	}
-};
 
 enum job
 {
@@ -23,11 +17,11 @@ class user
 protected:
 	string user_id;
 	job user_job;
+	virtual string getPassword();
 
 public:
-	//user(string username, string user_id, job user_job);
 	user();
-	virtual job Login(ifstream input);
+	virtual job Login(map<string,string> users, map<string, job> userGroup);
 	virtual void order(dish newDish);
 	virtual int searchMaterial(string material, inventory totalinventory);
 	virtual void newDish(dish newdish, vector<dish> totaldish, menu* currentmenu, inventory totalinventory);

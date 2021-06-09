@@ -29,11 +29,6 @@ double customer::check() {
 	 dishList.clear();
 }
 
-job customer::Login()
-{
-	return cus;
-}
-
 job customer::returnjob() {
 	return cus;
 }

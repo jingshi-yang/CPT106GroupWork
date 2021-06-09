@@ -1,112 +1,119 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+<ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="chef">
-    <Position X="6" Y="4.5" Width="2" />
+    <Position X="1" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAQAAAAAAACAAAAAAAAAAAAAAAAAgAQAAAAAAI=</HashCode>
+      <HashCode>AAAAAAAQAAAAAAACAAAAAAAAAAAAAAAAAgAAAAAAAAI=</HashCode>
       <FileName>chef.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="customer">
-    <Position X="8.5" Y="4.5" Width="1.75" />
+    <Position X="2.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAABAACIAAACBAAAAAAAAEAAAAAAAAAQAAAAAAA=</HashCode>
+      <HashCode>AAAAAAABAACIAAACBAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>customer.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="dish">
-    <Position X="3.25" Y="0.5" Width="2.5" />
+    <Position X="4.75" Y="0.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>IAABAEAAAAgAAAAAEAAAAAACAAAEAAAAAAAAgABABAA=</HashCode>
       <FileName>dish.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="FileIO">
-    <Position X="0.5" Y="0.5" Width="2.25" />
+    <Position X="9.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AACAAABgABAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <HashCode>AACAAABgABAEAAAAAAAAAAAAAAAAAAAAEABAAAIBAAA=</HashCode>
       <FileName>FileIO.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="inventory">
-    <Position X="0.5" Y="3" Width="2.5" />
-    <TypeIdentifier>
-      <HashCode>AAgBACAEAAAAAAAAAAAQABAAAAAAAAACAAAAQABCAAA=</HashCode>
-      <FileName>inventory.h</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="manager">
-    <Position X="10.75" Y="4.5" Width="2.25" />
+    <Position X="4.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAARAACIAAACBAAAAAAEAEAAAAAAAAAQAAAAAAI=</HashCode>
       <FileName>manager.h</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="inventory">
+    <Position X="6.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgBACAEAAAQAAAAAAAQABAAAAAIAAACAAAAQABCAAA=</HashCode>
+      <FileName>inventory.h</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="menu">
-    <Position X="3.25" Y="3.75" Width="2.5" />
+    <Position X="6.75" Y="0.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AEAAAMAAAAACAAAAQAEAAGhAAgAAAAAAAAAAAABAAQA=</HashCode>
       <FileName>menu.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="user">
-    <Position X="8.25" Y="0.5" Width="2" />
+    <Position X="2.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAxAACIAAACAAAAAAAAAFAAAAAAAAAQAAAAAQI=</HashCode>
+      <HashCode>AAAAAAAxAACIAAACAAAIAAAAAFAAAAAAAAAQAAAAAQI=</HashCode>
       <FileName>user.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Struct Name="DishnameException">
-    <Position X="15.5" Y="3.5" Width="1.75" />
+  <Struct Name="DishnameException" Collapsed="true">
+    <Position X="11.5" Y="2.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>dish.h</FileName>
+      <FileName>Exceptions.h</FileName>
     </TypeIdentifier>
   </Struct>
-  <Struct Name="NoDishException">
-    <Position X="14.5" Y="5" Width="1.75" />
+  <Struct Name="NoDishException" Collapsed="true">
+    <Position X="13.75" Y="2.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>dish.h</FileName>
+      <FileName>Exceptions.h</FileName>
     </TypeIdentifier>
   </Struct>
-  <Struct Name="DishexistException">
-    <Position X="15.5" Y="2" Width="1.75" />
+  <Struct Name="DishexistException" Collapsed="true">
+    <Position X="13.75" Y="4.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>dish.h</FileName>
+      <FileName>Exceptions.h</FileName>
     </TypeIdentifier>
   </Struct>
-  <Struct Name="QuantityIllegalException">
-    <Position X="13.25" Y="3.5" Width="2" />
+  <Struct Name="NoPermissionException" Collapsed="true">
+    <Position X="11.5" Y="3.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>inventory.h</FileName>
+      <FileName>Exceptions.h</FileName>
     </TypeIdentifier>
   </Struct>
-  <Struct Name="PriceIllegalException">
-    <Position X="15.5" Y="0.5" Width="1.75" />
+  <Struct Name="QuantityIllegalException" Collapsed="true">
+    <Position X="13.75" Y="5.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>inventory.h</FileName>
+      <FileName>Exceptions.h</FileName>
     </TypeIdentifier>
   </Struct>
-  <Struct Name="NoMaterialsException">
-    <Position X="13.25" Y="2" Width="2" />
+  <Struct Name="PriceIllegalException" Collapsed="true">
+    <Position X="13.75" Y="3.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>inventory.h</FileName>
+      <FileName>Exceptions.h</FileName>
     </TypeIdentifier>
   </Struct>
-  <Struct Name="NoPermissionException">
-    <Position X="13.25" Y="0.5" Width="2" />
+  <Struct Name="NoMaterialsException" Collapsed="true">
+    <Position X="11.5" Y="4.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>user.h</FileName>
+      <FileName>Exceptions.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="WrongUserException" Collapsed="true">
+    <Position X="11.5" Y="5.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions.h</FileName>
     </TypeIdentifier>
   </Struct>
   <Enum Name="job">
-    <Position X="10.5" Y="0.75" Width="1.5" />
+    <Position X="11.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAEAAEAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>user.h</FileName>

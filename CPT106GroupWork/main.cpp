@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include"dish.h"
 #include"menu.h"
 #include"inventory.h"
@@ -16,7 +16,7 @@ int main()
     FileIO inventoryfile("inventory.txt");
     FileIO dishfile("dish.txt");
     FileIO Loginlist("Loginlist.txt");
-    inventory myinventory(inventoryfile.readAllStream());
+    inventory myinventory(inventoryfile.readInventoryMaterials(), inventoryfile.readInventoryPrices());
     vector<dish> mydish = dishfile.readdish(myinventory);
     menu mymenu(mydish, myinventory), ordermenu;
     bool success = true;
@@ -29,31 +29,32 @@ int main()
     do
     {
         system("cls");
-        cout << "-------------------------------------------\n";
-        cout << "|" << setw(42) << " |" << endl;
-        cout << "| Welcome to Restaurant Management System |" << endl;
-        cout << "|" << setw(42) << " |" << endl;
-        cout << "|-----------------------------------------|\n";
-        cout << setw(42) << setiosflags(ios::left) << "|Please login: " << "|\n";
-        cout << setw(42) << setiosflags(ios::left) << "|(Input anything login as a custemer)" << "|\n";
-        cout << "-------------------------------------------\n";
+        cout << "┌-----------------------------------------┐\n";
+        cout << "│                                         │" << endl;
+        cout << "│ Welcome to Restaurant Management System │" << endl;
+        cout << "│                                         │" << endl;
+        cout << "│-----------------------------------------│\n";
+        cout << setw(42) << setiosflags(ios::left) << "│ Please login: " << " │\n";
+        cout << setw(42) << setiosflags(ios::left) << "│ (Input customer login as a customer)" << " │\n";
+        cout << "└-----------------------------------------┘\n";
         try
         {
-            userjob = loginuser.Login(Loginlist.readAllStream());
+            userjob = loginuser.Login(Loginlist.readUsersPw(), Loginlist.readUsersJob());
             if (userjob == man) {
                 User = new manager();
             }
             else if (userjob == che) {
                 User = new chef();
             }
-            else {
+            else if (userjob == cus) {
                 User = new customer();
             }
             success = false;
         }
-        catch (const char* expect)
+        catch (const exception& e)
         {
-            cout << expect;
+            cout << e.what() << endl;
+            system("pause");
         }
     } while (success);
     system("cls");
@@ -65,7 +66,6 @@ int main()
     system("pause");
     int choseAction;
     success = true;
-    userjob = man;
     do
     {
         int No = 0;
@@ -188,14 +188,14 @@ int main()
                 string dishname, material;
                 double price = 0.0;
                 vector<string> totalmaterial;
-                cout << "Please input dish name(between 2 to 20 charactors): " << endl;
+                cout << "Please input dish name(between 2 to 20 characters): " << endl;
                 cin >> dishname;
                 int success = 1;
                 cout << "Please input price:\n";
                 cin >> price;
                 while (success)
                 {
-                    cout << "Please input dish matrials(between 2 to 20 charactors)" << endl;
+                    cout << "Please input dish matrials(between 2 to 20 characters)" << endl;
                     cin >> material;
                     totalmaterial.push_back(material);
                     cout << "If that is all materials, please input 0 to exit, if not, input 1 to continue\n";
@@ -273,6 +273,7 @@ int main()
             }
             break;
         case 6: //show materials
+            myinventory.showMaterials();
             system("pause");
             break;
         case 7: //add materials
@@ -296,6 +297,19 @@ int main()
             }
             break;
         case 8: //delete materials
+            try
+            {
+                cout << "Please input the material you want to delete:\n";
+                string deleteMaterial;
+                cin >> deleteMaterial;
+                myinventory.deleteMaterial(deleteMaterial);
+            }
+            catch (const std::exception& e)
+            {
+                cout << e.what() << endl;
+                system("pause");
+                break;
+            }
             system("pause");
             break;
         case 9: //modify a material

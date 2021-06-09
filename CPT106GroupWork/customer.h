@@ -5,7 +5,6 @@ class customer :
     public user
 {
 private:
- //   map<dish, int> orderList;
     menu dishList;
 public:
     customer();
@@ -13,7 +12,6 @@ public:
     void deletedish(dish deletedish);
     void displaymenu();
     double check();
-    job Login();
     job returnjob();
 };
 

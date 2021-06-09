@@ -1,39 +1,51 @@
 #include "user.h"
 
+string user::getPassword()
+{
+	string pw;
+	char ch;
+	ch = _getch();
+	while (ch != '\n' && ch != '\r')
+	{
+		if (ch == 8) {
+			_putch('\b');
+			_putch(' ');
+			_putch('\b');
+			pw.erase(pw.end() - 1);
+			ch = _getch();
+			continue;
+		}
+		if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') || (ch >= '0' && ch <= '9')) {
+			_putch('*');
+			pw += ch;
+			ch = _getch();
+		}
+	}
+	_putch('\n');
+	return pw;
+}
+
 user::user() {
 }
 
-
-job user::Login(ifstream input)
+job user::Login(map<string, string> users, map<string, job> usergroup)
 {
 	string uid;
 	string pw;
 	cout << "Please enter your user id." << endl;
 	cin >> uid;
-	cout << "Please enter your user password." << endl;
-	cin >> pw;
-	map<string, string> users;
-	map<string, job> usergroup;
-	string tempName, tempPW, tempUsergroup;
-	while (input.get() != EOF)
+	if (uid == "customer" || uid == "Customer" || uid == "CUSTOMER")
 	{
-		input >> tempName >> tempPW >> tempUsergroup;
-		users[tempName] = tempPW;
-		if (tempUsergroup == "manager")
-		{
-			usergroup[uid] = man;
-		}
-		else
-		{
-			usergroup[uid] = che;
-		}
+		return cus;
 	}
+	cout << "Please enter your user password." << endl;
+	pw = getPassword();
 	user_id = uid;
 	if (users[uid] == pw)
 	{
 		return usergroup[uid];
 	}
-
+	throw WrongUserException();
 	return cus;
 }
 
