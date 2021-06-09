@@ -30,12 +30,12 @@ int main()
     {
         system("cls");
         cout << "-------------------------------------------\n";
-        cout << "|" << setw(43) << " |" << endl;
+        cout << "|" << setw(42) << " |" << endl;
         cout << "| Welcome to Restaurant Management System |" << endl;
-        cout << "|" << setw(43) << " |" << endl;
+        cout << "|" << setw(42) << " |" << endl;
         cout << "|------------------------------------------|\n";
-        cout << setw(43) << setiosflags(ios::left) << "|Please login: " << "|\n";
-        cout << setw(43) << setiosflags(ios::left) << "|(Input anything login as a custemer)" << "|\n";
+        cout << setw(42) << setiosflags(ios::left) << "|Please login: " << "|\n";
+        cout << setw(42) << setiosflags(ios::left) << "|(Input anything login as a custemer)" << "|\n";
         cout << "-------------------------------------------\n";
         try
         {
@@ -105,11 +105,12 @@ int main()
                 switch (orderact)
                 {
                 case 1: // order a dish
-                    cout << "Please type dish No to order:\n";
-                    cin >> dishact;
                     try
                     {
+                        cout << "Please type dish No to order:\n";
+                        cin >> dishact;
                         User->order(mymenu.getMenuList()[dishact]);
+                        cout << "Order success\n";
                     }
                     catch (const char* expect)
                     {
@@ -120,9 +121,10 @@ int main()
                 case 2: // Cancel a dish
                     try
                     {
-                        cout << "Please type dish No to delete:\n";
+                        cout << "Please type dish No to cancel:\n";
                         cin >> dishact;
                         User->deletedish(mymenu.getMenuList()[dishact]);
+                        cout << "Cancel successful\n";
                         mymenu.refresh(myinventory);
                     }
                     catch (const char* except)
@@ -179,23 +181,30 @@ int main()
             }
             break;
         case 3: //3. Delete meal
-            system("cls");
-            cout << "-----------------------------------------------------\n";
-            cout << "|No.|        name        |count|price|\n";
-            for (int i = 0; i < mydish.size(); i++) {
-                cout << "|" << setw(2) << i << ".|" << setw(20) << mydish[i].getname() << "|" << setw(5) << mydish[i].getprice() << "|" << setw(20) << mydish[i].getmaterials()[0] << " |" << endl;
-                for (int j = 1; j < mydish[i].getmaterials().size(); j++) {
-                    cout << "|" << setw(4) << ".|" << setw(21) << "|" << setw(6) << "|" << setw(20) << mydish[i].getmaterials()[0] << " |" << endl;
+            try
+            {
+                system("cls");
+                cout << "-----------------------------------------------------\n";
+                cout << "|No.|        name        |count|price|\n";
+                for (int i = 0; i < mydish.size(); i++) {
+                    cout << "|" << setw(2) << i << ".|" << setw(20) << mydish[i].getname() << "|" << setw(5) << mydish[i].getprice() << "|" << setw(20) << mydish[i].getmaterials()[0] << " |" << endl;
+                    for (int j = 1; j < mydish[i].getmaterials().size(); j++) {
+                        cout << "|" << setw(4) << ".|" << setw(21) << "|" << setw(6) << "|" << setw(20) << mydish[i].getmaterials()[0] << " |" << endl;
+                    }
+                    cout << "----------------------------------------------------\n";
                 }
-                cout << "----------------------------------------------------\n";
+                cout << "Please input delete dish:";
+                cin >> dishact;
+                for (auto iter = mydish.begin(); iter != mydish.end(); iter++) {
+                    if (distance(mydish.begin(), iter) == dishact) {
+                        mymenu.deleteDish(mydish[distance(mydish.begin(), iter)]);
+                        mydish.erase(iter);
+                    }
+                }
             }
-            cout << "Please input delete dish:";
-            cin >> dishact;
-            for (auto iter = mydish.begin(); iter != mydish.end(); iter++) {
-                if (distance(mydish.begin(), iter) == dishact) {
-                    mymenu.deleteDish(mydish[distance(mydish.begin(), iter)]);
-                    mydish.erase(iter);
-                }
+            catch (const char* expect)
+            {
+                cout << expect << endl;
             }
             break;
         case 4: //4. Show menu
