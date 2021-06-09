@@ -1,0 +1,7 @@
+tomato 10 4
+egg 10 3
+beef10 15
+mutton 10 12
+potato 10 2
+onion 10 5
+curry 10 8

@@ -1,1 +1,5 @@
-Dish price materials
+tomatoomelette 15 tomato egg
+beeffillet 32 beef onion
+muttonshashlik 25 mutton
+currybeef 30 beef curry potato
+tomato and beef soup 31 beef tomato
