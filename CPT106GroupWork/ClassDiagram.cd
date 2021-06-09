@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="chef">
+    <Position X="6" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAACAAAAAAAAAAAAAAAAAgAQAAAAAAI=</HashCode>
+      <FileName>chef.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="customer">
+    <Position X="8.5" Y="4.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAACIAAACBAAAAAAAAEAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>customer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="dish">
+    <Position X="3.25" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>IAABAEAAAAgAAAAAEAAAAAACAAAEAAAAAAAAgABABAA=</HashCode>
+      <FileName>dish.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FileIO">
+    <Position X="0.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AACAAABgABAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>FileIO.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="inventory">
+    <Position X="0.5" Y="3" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAgBACAEAAAAAAAAAAAQABAAAAAAAAACAAAAQABCAAA=</HashCode>
+      <FileName>inventory.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="manager">
+    <Position X="10.75" Y="4.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAARAACIAAACBAAAAAAEAEAAAAAAAAAQAAAAAAI=</HashCode>
+      <FileName>manager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="menu">
+    <Position X="3.25" Y="3.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAMAAAAACAAAAQAEAAGhAAgAAAAAAAAAAAABAAQA=</HashCode>
+      <FileName>menu.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="user">
+    <Position X="8.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAxAACIAAACAAAAAAAAAFAAAAAAAAAQAAAAAQI=</HashCode>
+      <FileName>user.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="DishnameException">
+    <Position X="15.5" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>dish.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="NoDishException">
+    <Position X="14.5" Y="5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>dish.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="DishexistException">
+    <Position X="15.5" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>dish.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="QuantityIllegalException">
+    <Position X="13.25" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>inventory.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="PriceIllegalException">
+    <Position X="15.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>inventory.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="NoMaterialsException">
+    <Position X="13.25" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>inventory.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="NoPermissionException">
+    <Position X="13.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>user.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="job">
+    <Position X="10.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAEAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>user.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>
