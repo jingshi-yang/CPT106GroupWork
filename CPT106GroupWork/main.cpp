@@ -173,8 +173,9 @@ int main()
                     }
                     break;
                 case 4: //check
-                    cout << "The total price is: \n";
+                    cout << "The total price is: ";
                     Grossprofit = User->check();
+                    cout << endl;
                     system("pause");
                     break;
                 default:
@@ -332,6 +333,7 @@ int main()
             break;
         case 10:
             cout << "The total profit is: " << Grossprofit << endl;
+                break;
         default:
             cout << "Invalid input, please enter an integer between 1 and " << No << endl;
             system("pause");
