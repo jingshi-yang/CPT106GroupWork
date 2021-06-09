@@ -49,9 +49,9 @@ void FileIO::writedishToFile(vector<dish> dishlist) {
 	fout.open(filename);
 	for (int i = 0; i < dishlist.size(); i++) {
 		vector<string> materials = dishlist[i].getmaterials();
-		fout << dishlist[i].getname() << "\t" << dishlist[i].getprice() << "\t";
+		fout << dishlist[i].getname() << " " << dishlist[i].getprice();
 		for(int j = 0;j<materials.size();j++){
-			fout << materials[j] << " ";
+			fout << " " << materials[j];
 		}
 		fout << endl;
 	}

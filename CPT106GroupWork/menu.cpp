@@ -13,9 +13,10 @@ menu::menu(vector<dish> dishList, inventory totalinventory)
 	bool success = true;
 	for (int i = 0; i < dishList.size(); i++)
 	{
+		success = true;
 		materials = dishList[i].getmaterials();
 		for (int j = 0; j < materials.size(); j++) {
-			if ((totalinventory.isExisted(materials[j])&&totalinventory.getInventory(materials[j])>0))
+			if (!(totalinventory.isExisted(materials[j])&&totalinventory.getInventory(materials[j])>0))
 			{
 				success = false;
 				break;
