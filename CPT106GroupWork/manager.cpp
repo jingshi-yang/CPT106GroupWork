@@ -37,6 +37,11 @@ void manager::newDish(dish newdish, vector<dish> totaldish, menu* currentmenu, i
 	currentmenu->refresh(totalinventory);
 }
 
+void manager::canceldish(dish deletedish) {
+	dishList.deleteDish(deletedish);
+	deletedish.cancelOrdered();
+}
+
 void manager::deletedish(dish deletedish) {
 	dishList.deleteDish(deletedish);
 }
@@ -51,7 +56,7 @@ void manager::displaymenu() {
 }
 
 double manager::check() {
-	dishList.gettotalPrice();
+	cout<<dishList.gettotalPrice();
 	return dishList.gettotalGrossProfit();
 	dishList.clear();
 }

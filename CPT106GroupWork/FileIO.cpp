@@ -15,7 +15,7 @@ ifstream FileIO::readAllStream()
 	return fin;
 }
 
-vector<dish> FileIO::readdish(inventory totalinventory) {
+vector<dish> FileIO::readdish(inventory *totalinventory) {
 	ifstream fin;
 	vector<dish> readdish;
 	vector<string> materials;
@@ -102,9 +102,8 @@ map<string, job> FileIO::readUsersJob()
 void FileIO::writeinventoryToFile(vector<string> material, inventory Inventory) {
 	ofstream fout;
 	fout.open(filename);
-	fout << "materials " << "Inventory " << "price " << endl;
 	for (int i = 0; i < material.size(); i++) {
-		fout << material[i] << " " << Inventory.getInventory(material[i]) << " " << Inventory.getPrice(material[i]) <<"\t\n";
+		fout << " " << material[i] << " " << Inventory.getInventory(material[i]) << " " << Inventory.getPrice(material[i]) << "\t\n";
 	}
 	fout.close();
 }

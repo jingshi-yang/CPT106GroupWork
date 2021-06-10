@@ -54,6 +54,13 @@ void inventory::deleteMaterial(string key)
 	prices.erase(key);
 }
 
+vector<string> inventory::getmaterials() {
+	vector<string> returnmaterials;
+	for (auto iter = materials.begin(); iter != materials.end(); iter++) {
+		returnmaterials.push_back(iter->first);
+	}
+	return returnmaterials;
+}
 int inventory::getInventory(string key)
 {
 	if (!isExisted(key)) throw NoMaterialsException();

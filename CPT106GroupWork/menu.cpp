@@ -31,13 +31,19 @@ menu::menu(vector<dish> dishList, inventory totalinventory)
 
 void menu::addDish(dish newDish)
 {
+	if (!menuList.size()) {
+		ordernumber.push_back(1);
+		menuList.push_back(newDish);
+		newDish.isOrdered();
+		return;
+	}
 	for (int i = 0; i < menuList.size(); i++) {
 		if ( menuList[i].getname() == newDish.getname())
 		{
 			ordernumber[i]++;
 			newDish.isOrdered();
 		}
-		else if(i = menuList.size()-1)
+		else if(i = menuList.size())
 		{
 			menuList.push_back(newDish);
 			ordernumber.push_back(1);
@@ -54,8 +60,7 @@ void menu::deleteDish(dish deletedDish)
 		if (iter->getname() == deletedDish.getname() )
 		{
 			if(ordernumber[distance(menuList.begin(), iter)]>1){
-				menuList.erase(iter);
-				deletedDish.cancelOrdered();
+				ordernumber[distance(menuList.begin(), iter)]--;
 				return;
 			}
 			else {
@@ -100,7 +105,7 @@ void menu::refresh(inventory totalinventory) {
 	for (auto iter = menuList.begin(); iter != menuList.end(); iter++) {
 		materials.clear();
 		materials = iter->getmaterials();
-		for (int j = 0; j < menuList.size(); j++) {
+		for (int j = 0; j < materials.size(); j++) {
 			if (!totalinventory.getInventory(materials[j])) {
 				menuList.erase(iter);
 			}

@@ -14,7 +14,7 @@ private:
 	double price = 0;
 	inventory *currentInventory;
 public:
-	dish(string dishname, vector<string> materialsInput, inventory inventory, double price);
+	dish(string dishname, vector<string> materialsInput, inventory *inventory, double price);
 	double grossProfit();
 	void isOrdered();
 	void cancelOrdered();

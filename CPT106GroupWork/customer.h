@@ -9,7 +9,7 @@ private:
 public:
     customer();
     void order(dish newDish);
-    void deletedish(dish deletedish);
+    void canceldish(dish deletedish);
     void displaymenu();
     double check();
     job returnjob();

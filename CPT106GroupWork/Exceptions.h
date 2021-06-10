@@ -3,6 +3,13 @@
 
 using namespace std;
 
+struct IllegalInputException :
+	public exception
+{
+	const char* what() const throw() {
+		return "Illegal Input!";
+	}
+};
 struct DishnameException :
 	public exception
 {

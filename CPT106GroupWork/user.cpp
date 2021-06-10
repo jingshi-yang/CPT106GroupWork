@@ -64,6 +64,11 @@ void user::newDish(dish newdish, vector<dish> totaldish, menu* currentmenu, inve
 	throw NoPermissionException();
 }
 
+void user::canceldish(dish deletedish)
+{
+	throw NoPermissionException();
+}
+
 void user::deletedish(dish deletedish)
 {
 	throw NoPermissionException();

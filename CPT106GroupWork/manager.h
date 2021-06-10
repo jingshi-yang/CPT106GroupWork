@@ -11,6 +11,7 @@ public:
     void order(dish newDish);
     int searchMaterial(string material, inventory totalinventory);
     void newDish(dish newdish, vector<dish> totaldish, menu* currentmenu, inventory totalinventory);
+    void canceldish(dish deletedish);
     void deletedish(dish deletedish);
     void displaymenu();
     double check();

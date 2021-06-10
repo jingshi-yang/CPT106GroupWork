@@ -6,12 +6,12 @@ customer::customer()
 
 void customer::order(dish newDish)
 {
-		dishList.addDish(newDish);
+	dishList.addDish(newDish);
 }
 
-void customer::deletedish(dish deletedish) {
-		dishList.deleteDish(deletedish);
-		deletedish.cancelOrdered();
+void customer::canceldish(dish deletedish) {
+	dishList.deleteDish(deletedish);
+	deletedish.cancelOrdered();
 }
 
 void customer::displaymenu() {

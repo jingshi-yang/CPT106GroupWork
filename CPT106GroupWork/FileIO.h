@@ -15,7 +15,7 @@ private:
 public:
 	FileIO(string name);
 	ifstream readAllStream();
-	vector<dish> readdish(inventory totalinventory);
+	vector<dish> readdish(inventory* totalinventory);
 	map<string, int> readInventoryMaterials();
 	map<string, double> readInventoryPrices();
 	map<string, string> readUsersPw();

@@ -25,6 +25,7 @@ public:
 	virtual void order(dish newDish);
 	virtual int searchMaterial(string material, inventory totalinventory);
 	virtual void newDish(dish newdish, vector<dish> totaldish, menu* currentmenu, inventory totalinventory);
+	virtual void canceldish(dish deletedish);
 	virtual void deletedish(dish deletedish);
 	virtual void displaymenu();
 	virtual double check();

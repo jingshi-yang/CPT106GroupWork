@@ -25,7 +25,7 @@ public:
 	void deleteMaterial(string key);					// Delete a material
 	bool isExisted(string key);
 
-
+	vector<string> getmaterials(); // Return all materials
 	int getInventory(string key);	// Return the quantity of given material
 	double getPrice(string key);	// Return the price of given material
 	void showMaterials();			// Display all materials

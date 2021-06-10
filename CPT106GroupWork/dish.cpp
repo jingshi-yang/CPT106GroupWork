@@ -1,11 +1,11 @@
 #include "dish.h"
 
 
-dish::dish(string dishname, vector<string> materialsInput, inventory inventory, double inputprice)
+dish::dish(string dishname, vector<string> materialsInput, inventory *inventory, double inputprice)
 {
 	name = dishname;
 	materials = materialsInput;
-	currentInventory = &inventory;
+	currentInventory = inventory;
 	price = inputprice;
 }
 

@@ -17,7 +17,7 @@ int main()
     FileIO dishfile("dish.txt");
     FileIO Loginlist("Loginlist.txt");
     inventory myinventory(inventoryfile.readInventoryMaterials(), inventoryfile.readInventoryPrices());
-    vector<dish> mydish = dishfile.readdish(myinventory);
+    vector<dish> mydish = dishfile.readdish(&myinventory);
     menu mymenu(mydish, myinventory), ordermenu;
     bool success = true;
     string name, id;
@@ -130,6 +130,11 @@ int main()
                     {
                         cout << "Please type dish No to order:\n";
                         cin >> dishact;
+                        if ((!cin.good() || dishact>=mymenu.getMenuList().size())) {
+                            cin.clear();
+                            throw IllegalInputException();
+                            break;
+                        }
                         User->order(mymenu.getMenuList()[dishact]);
                         cout << "Order successful\n";
                         system("pause");
@@ -138,7 +143,7 @@ int main()
                     {
                         cout << e.what() << endl;
                         system("pause");
-                        break;
+//                        break;
                     }
                     break;
                 case 2: // Cancel a dish
@@ -146,7 +151,7 @@ int main()
                     {
                         cout << "Please type dish No to cancel:\n";
                         cin >> dishact;
-                        User->deletedish(mymenu.getMenuList()[dishact]);
+                        User->canceldish(mymenu.getMenuList()[dishact]);
                         cout << "Cancel successful\n";
                         mymenu.refresh(myinventory);
                         system("pause");
@@ -162,8 +167,8 @@ int main()
                     try
                     {
                         User->displaymenu();
-                        system("pause");
                         mymenu.refresh(myinventory);
+                        system("pause");
                     }
                     catch (const exception& e)
                     {
@@ -191,9 +196,14 @@ int main()
                 vector<string> totalmaterial;
                 cout << "Please input dish name(between 2 to 20 characters): " << endl;
                 cin >> dishname;
+                if (dishname.size() < 2 || dishname.size() > 20) { throw IllegalInputException(); }
                 int success = 1;
                 cout << "Please input price:\n";
                 cin >> price;
+                if (!cin.good()) {
+                    throw IllegalInputException();
+                    cin.clear();
+                }
                 while (success)
                 {
                     cout << "Please input dish matrials(between 2 to 20 characters)" << endl;
@@ -202,7 +212,7 @@ int main()
                     cout << "If that is all materials, please input 0 to exit, if not, input 1 to continue\n";
                     cin >> success;
                 }
-                dish newdish(dishname, totalmaterial, myinventory, price);
+                dish newdish(dishname, totalmaterial, &myinventory, price);
                 price = 0.0;
                 for (int i = 0; i < mydish.size(); i++) {
                     if (dishname == mydish[i].getname()) {
@@ -261,8 +271,9 @@ int main()
         case 5: //Search material
             try
             {
-                cout << "Please input material name:\n";
+                cout << "Please input material name(between 2 and 20 characters):\n";
                 cin >> searchmaterial;
+                if (searchmaterial.size() < 2 || searchmaterial.size() > 20) { throw IllegalInputException(); }
                 cout << searchmaterial <<" number is "<< myinventory.getInventory(searchmaterial)<<endl;
                 system("pause");
             }
@@ -280,12 +291,21 @@ int main()
         case 7: //add materials
             try
             {
-                cout << "Please input material name:\n";
+                cout << "Please input material name(between 2 and 20 characters):\n";
                 cin >> addmaterial;
+                if (addmaterial.size() < 2 || addmaterial.size() > 20) { throw IllegalInputException(); }
                 cout << "Please input material inventory:\n";
                 cin >> materialinventory;
+                if (!cin.good()) {
+                    throw IllegalInputException();
+                    cin.clear();
+                }
                 cout << "Please input material price:\n";
                 cin >> price;
+                if (!cin.good()) {
+                    throw IllegalInputException();
+                    cin.clear();
+                }
                 myinventory.add(addmaterial, materialinventory, price);
                 cout << "Add successful";
                 system("pause");
@@ -333,6 +353,7 @@ int main()
             break;
         case 10:
             cout << "The total profit is: " << Grossprofit << endl;
+            system("pause");
                 break;
         default:
             cout << "Invalid input, please enter an integer between 1 and " << No << endl;
@@ -341,7 +362,7 @@ int main()
         }
     } while (success);
 
-//    inventoryfile.writeinventoryToFile(matetials,myinventory);
+    inventoryfile.writeinventoryToFile(myinventory.getmaterials(),myinventory);
     dishfile.writedishToFile(mydish);
     return 0;
 }
