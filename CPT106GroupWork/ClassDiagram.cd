@@ -10,7 +10,7 @@
   <Class Name="customer">
     <Position X="3" Y="4.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAABAACIAAACBAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAABAgAIAAACBAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>customer.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -31,14 +31,14 @@
   <Class Name="manager">
     <Position X="5.25" Y="4.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAARAACIAAACBAAAAAAEAEAAAAAAAAAQAAAAAAI=</HashCode>
+      <HashCode>AAAAAAARAgCIAAACBAAAAAAEAEAAAAAAAAAQAAAAAAI=</HashCode>
       <FileName>manager.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="inventory">
     <Position X="7.75" Y="4.5" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAgBACAEAAAQAAAAAAAQABAAAAAIAAACAAAAQABCAAA=</HashCode>
+      <HashCode>AAgBAGAEAAAQAAAAAAAQABAAAAAIAAACAAAAQABCAAA=</HashCode>
       <FileName>inventory.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -52,7 +52,7 @@
   <Class Name="user">
     <Position X="2.75" Y="0.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAxAACIAAACAAAIAAAAAFAAAAAAAAAQAAAAAQI=</HashCode>
+      <HashCode>AAAAAAAxAgCIAAACAAAIAAAAAFAAAAAAAAAQAAAAAQI=</HashCode>
       <FileName>user.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -107,6 +107,20 @@
   </Struct>
   <Struct Name="WrongUserException" Collapsed="true">
     <Position X="10.5" Y="6" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="MaterialExistException" Collapsed="true">
+    <Position X="12.75" Y="8" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="IllegalInputException" Collapsed="true">
+    <Position X="10.5" Y="8" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Exceptions.h</FileName>

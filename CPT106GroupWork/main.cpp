@@ -247,6 +247,10 @@ int main()
                 }
                 cout << "Please input delete dish:";
                 cin >> dishact;
+                if (!cin.good()||dishact>mydish.size()) {
+                    throw IllegalInputException();
+                    cin.clear();
+                }
                 for (auto iter = mydish.begin(); iter != mydish.end(); iter++) {
                     if (distance(mydish.begin(), iter) == dishact) {
                         mymenu.deleteDish(mydish[distance(mydish.begin(), iter)]);
