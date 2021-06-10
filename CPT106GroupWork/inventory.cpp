@@ -17,7 +17,7 @@ inventory::inventory(map<string, int> newMaterials, map<string, double> newPrice
 
 void inventory::add(string key, int value, double price)
 {
-	if (!isExisted(key)) throw NoMaterialsException();
+	if (isExisted(key)) throw MaterialExistException();
 	materials.insert(pair<string, int>(key, value));
 	prices.insert(pair<string, double>(key, price));
 }

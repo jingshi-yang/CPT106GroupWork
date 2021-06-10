@@ -3,6 +3,14 @@
 
 using namespace std;
 
+struct MaterialExistException :
+	public exception
+{
+	const char* what() const throw() {
+		return "Material is allready exist!";
+	}
+};
+
 struct IllegalInputException :
 	public exception
 {

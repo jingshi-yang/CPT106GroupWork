@@ -324,6 +324,8 @@ int main()
                 string deleteMaterial;
                 cin >> deleteMaterial;
                 myinventory.deleteMaterial(deleteMaterial);
+                cout << "Delete " << deleteMaterial << " successful!";
+                system("pause");
             }
             catch (const std::exception& e)
             {

@@ -1,7 +1,7 @@
- beef 10 15	
- curry 10 8	
- egg 10 3	
+ beef 8 20	
+ curry 9 8	
+ egg 6 3	
  mutton 10 12	
- onion 10 5	
- potato 10 2	
- tomato 10 4	
+ onion 9 5	
+ potato 9 2	
+ tomato 6 4	
